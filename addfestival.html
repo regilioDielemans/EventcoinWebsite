@@ -8,49 +8,48 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Festival toevoegen</h1>
+		<h1>Festival toevoegen</h1><br>
 
 		<form>
 		  <div class="form-group">
-		    <label for="exampleInputEmail1">naam</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email adres">
-		    <small id="emailHelp" class="form-text text-muted">Gebruik hier uw emailadres om in te loggen.</small>
+		    <label for="exampleInputEmail1">Festival naam</label>
+		    <input type="email" class="form-control" id="festivalName" aria-describedby="emailHelp">
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleInputPassword1">locatie</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="locatie">
+		    <input type="password" class="form-control" id="festivalLocation">
 		  </div>
 		  		  <div class="form-group">
-		    <label for="exampleInputPassword1">url naar map van festival</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="https://www.pollstar.com/Image/FestivalPhotos/a130e8de-4d88-4994-abd0-30ee70788f41-ultramiami-rec-final.png">
+		    <label for="exampleInputPassword1">Url naar map van festival</label>
+		    <input type="password" class="form-control" id="festivalMapUrl" placeholder="Voorbeeld: https://www.pollstar.com/Image/FestivalPhotos/a130e8de-4d88-4994-abd0-30ee70788f41-ultramiami-rec-final.png">
 		  </div>
 		  		  <div class="form-group">
-		    <label for="exampleInputPassword1">start datum</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="start datum">
+		    <label for="exampleInputPassword1">Start datum</label>
+		    <input type="password" class="form-control" id="festivalStart">
 		  </div>
 		  		  <div class="form-group">
-		    <label for="exampleInputPassword1">eind datum</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="eind datum">
+		    <label for="exampleInputPassword1">Eind datum</label>
+		    <input type="password" class="form-control" id="festivalEnd">
 		  </div>
 		  		  <div class="form-group">
-		    <label for="exampleInputPassword1">munt prijs</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="munt prijs">
+		    <label for="exampleInputPassword1">Munt prijs</label>
+		    <input type="password" class="form-control" id="festivalCoinPrice">
 		  </div>
 		  		  <div class="form-group">
-		    <label for="exampleInputPassword1">om schrijving nederlands</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="omschrijving nederlands">
+		    <label for="exampleInputPassword1">Omschrijving nederlands</label>
+		    <input type="password" class="form-control" id="festivalDescNL">
 		  </div>
 		  		  		  <div class="form-group">
-		    <label for="exampleInputPassword1">om schrijving engels</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="omschrijving engels">
+		    <label for="exampleInputPassword1">Omschrijving engels</label>
+		    <input type="password" class="form-control" id="festivalDescEN">
 		  </div>
 		  		  <div class="form-group">
-		    <label for="exampleInputPassword1">foto url</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="foto url">
+		    <label for="exampleInputPassword1">Foto Url</label>
+		    <input type="password" class="form-control" id="festivalPhotoUrl">
 		  </div>
 		  		  <div class="form-group">
-		    <label for="exampleInputPassword1">trailer url</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="trailer url">
+		    <label for="exampleInputPassword1">Trailer Url</label>
+		    <input type="password" class="form-control" id="festivalVideoUrl" placeholder="Voorbeeld: https://www.youtube.com/watch?v=Wx8WX3EpjNQ">
 		  </div>
 		  <button type="submit" class="btn btn-primary" onclick="addFestival()">voeg toe</button>
 		</form>		

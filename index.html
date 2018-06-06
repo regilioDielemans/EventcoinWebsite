@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="script.js" type="text/javascript"></script>
+	<title>Admin Website</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-
 </head>
 
 <body>
@@ -21,12 +22,10 @@
 	    <label for="exampleInputPassword1">Wachtwoord</label>
 	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Wachtwoord">
 	  </div>
-	  <button type="submit" class="btn btn-primary" onclick="UserLogin()">Login</button>
-	  <p id=responsP>hallo</p>
+	  <button onclick="login()" type="button" class="btn btn-primary">Login</button>
+	  <p hidden="none" id="redirectText"><br>U wordt nu door verwezen naar de Home Pagina...</p>	
 	</form>
 
-	</div>
-	
-	<script src="script.js"></script>
+	</div>	
 </body>
 </html>

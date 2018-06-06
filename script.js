@@ -1,23 +1,34 @@
-function UserLogin() {
-	var params = "userId=5&firstname=voornaam&insertion=van de&lastname=achternaam&dateOfBirth=1999-05-23&email=naam@avans.nl&role=1";
-	var url = "https://eventcoin.herokuapp.com/api/login";
-
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.open("POST", url, true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-   
-    var data = {"email": "test@avans.nl", "password": "test"};
-    xhttp.send(data);
-    xhttp.onreadystatechange = function(){
-    	if (xhttp.readyState === 4 && xhttp.status === 200) {
-    		var json = JSON.parse(xhttp.responseText);
-    		console.log(json.email + ", " + json.password);
-    	}
+function login(){
+    xhr = new XMLHttpRequest();
+    var url = "https://eventcoin.herokuapp.com/api/login";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () { 
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var json = JSON.parse(xhr.responseText);
+            console.log("The email adress: " + json.email + " has logged in")
+            document.getElementById("redirectText").removeAttribute("hidden");
+            setTimeout(openWindow, 3000);
+        }
+        if (xhr.readyState == 4 && xhr.status == 412) {
+            var json = JSON.parse(xhr.responseText);
+            if (json.code == 1) {
+                alert("Het ingevoerde email adres is incorrect.\nProbeer het opnieuw.");
+            }
+            if (json.code == 2) {
+                alert("Het ingevoerde wachtwoord is incorrect. \nProbeer het opnieuw.")
+            }
+        }
     }
-    //console.log(data)
-   	//var response = xhttp.responseText;
-   	//console.log(response);
-   		//console.log(response);
-    //document.getElementById(responsP).innerHTML = response;
+    var emailInput = document.getElementById('exampleInputEmail1').value
+    var passInput = document.getElementById('exampleInputPassword1').value
+
+    console.log(emailInput + ", " + passInput);
+
+    var data = JSON.stringify({"email":emailInput,"password":passInput});
+    xhr.send(data);
+}
+
+function openWindow(){
+    window.open("http://localhost/eventcoinwebsite/homepage.html", "_self")
 }
