@@ -70,7 +70,6 @@ function addfestival(){
         var data = JSON.stringify({"name":festivalName,"location":festivalLocation,"map":festivalMapUrl,"dateStart":festivalStart,"dateEnd":festivalEnd,"coinPrice":festivalCoinPrice,"descriptionNL":festivalDescNL,"descriptionEN":festivalDescEN,"imageUrl":festivalPhotoUrl,"collectionId":festivalCollectionId,"trailerUrl":trailerUrl,"sponsorArray":[],"lineUp":[]})
         xhr.send(data);
         console.log(data);
-    }
 }
 
 function openWindow(){
