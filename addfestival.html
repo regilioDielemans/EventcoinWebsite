@@ -4,11 +4,20 @@
 	<meta charset="UTF-8">
 	<title>Eventcoin - add festival</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 <body>
+<div class="topnav">
+		<a href="#home">Home</a>
+		<a class="active" href="http://localhost/eventcoinwebsite/addfestival.html">Festival toevoegen</a>
+		<a href="#festivalBewerken">Festival bewerken</a>
+		<a href="#sponsorToevoegen">Sponsor toevoegen</a>
+		<a href="#sponsorBewerken">Sponsor bewerken</a>
+	</div>
+
 	<div class="container">
-		<h1>Festival toevoegen</h1><br>
+		<br><h1>Festival toevoegen</h1><br>
 
 		<form>
 		  <div class="form-group">
@@ -51,7 +60,7 @@
 		    <label for="exampleInputPassword1">Trailer Url</label>
 		    <input type="password" class="form-control" id="festivalVideoUrl" placeholder="Voorbeeld: https://www.youtube.com/watch?v=Wx8WX3EpjNQ">
 		  </div>
-		  <button type="submit" class="btn btn-primary" onclick="addFestival()">voeg toe</button>
+		  <button type="submit" class="btn btn-primary" onclick="addFestival()">voeg toe</button><br><br>
 		</form>		
 	</div>
 </body>

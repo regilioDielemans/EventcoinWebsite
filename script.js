@@ -8,7 +8,7 @@ function login(){
             var json = JSON.parse(xhr.responseText);
             console.log("The email adress: " + json.email + " has logged in")
             document.getElementById("redirectText").removeAttribute("hidden");
-            setTimeout(openWindow, 3000);
+            setTimeout(openWindow, 2000);
         }
         if (xhr.readyState == 4 && xhr.status == 412) {
             var json = JSON.parse(xhr.responseText);
