@@ -1,12 +1,9 @@
-
 function login(){
     xhr = new XMLHttpRequest();
     var url = "https://eventcoin.herokuapp.com/api/login";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () { 
-
-       
         if (xhr.readyState == 4 && xhr.status == 200) {
             var json = JSON.parse(xhr.responseText);         
             
@@ -17,9 +14,8 @@ function login(){
                 sessionStorage.token = json.token;
                 setTimeout(openWindow, 2000);
             }else{
-                alert("je bent geen admin");
+                alert("U heeft geen administrator rechten.");
             }
-            
         }
         if (xhr.readyState == 4 && xhr.status == 412) {
                     var json = JSON.parse(xhr.responseText);
@@ -51,6 +47,13 @@ function addfestival(){
     xhr.setRequestHeader("Authorization",requestToken)
     console.log("voor onreadyStatechange")
     xhr.onreadystatechange = function () { 
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var json = JSON.parse(xhr.responseText);
+            if(xhr.readyState == 4 && xhr.status == 412){
+                var json = JSON.parse(xhr.responseText);
+            }
+        }
+    
         console.log("in onreadyStatechange")
         var festivalName = document.getElementById('festivalName').value
         var festivalLocation = document.getElementById('festivalLocation').value
@@ -63,12 +66,9 @@ function addfestival(){
         var festivalPhotoUrl = document.getElementById('festivalPhotoUrl').value
         var festivalVideoUrl = document.getElementById('festivalVideoUrl').value
 
-
-
-        console.log(emailInput + ", " + passInput);
-
-        var data = JSON.stringify({"name":festivalName,"location":location,"map":festivalMapUrl,"dateStart":festivalStart,"dateEnd":festivalEnd,"coinPrice":festivalCoinPrice,"descriptionNL":descriptionNL,"descriptionEN":descriptionEN,"imageUrl":festivalPhotoUrl,"trailerUrl":trailerUrl,"sponsorArray":[],"lineUp",[]});
-        //xhr.send(data);
+        var festivalCollectionId = 999;
+        var data = JSON.stringify({"name":festivalName,"location":festivalLocation,"map":festivalMapUrl,"dateStart":festivalStart,"dateEnd":festivalEnd,"coinPrice":festivalCoinPrice,"descriptionNL":festivalDescNL,"descriptionEN":festivalDescEN,"imageUrl":festivalPhotoUrl,"collectionId":festivalCollectionId,"trailerUrl":trailerUrl,"sponsorArray":[],"lineUp":[]})
+        xhr.send(data);
         console.log(data);
     }
 }
