@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home Pagina</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+</head>
+<body>
+	<div class="topnav">
+		<a href="#home">Home</a>
+		<a href="http://localhost/eventcoinwebsite/addfestival.html">Festival toevoegen</a>
+		<a class="active" href="http://localhost/eventcoinwebsite/editfestival.html">Festival bewerken</a>
+		<a href="#sponsorToevoegen">Sponsor toevoegen</a>
+		<a href="#sponsorBewerken">Sponsor bewerken</a>
+	</div>
+	<div class="container">
+		<h1>edit</h1>
+	</div>
+	
+
+
+
+	<script>
+		$(function() {
+			$.ajaxSetup({
+				var token = sessionStorage.token;
+				headers:{
+					'X-Access-Token': token;
+				}
+								url:'https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/Festival',
+				type:'GET',
+
+			})
+
+
+		})
+	</script>
+</body>
+</html>

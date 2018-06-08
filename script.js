@@ -71,6 +71,7 @@ function addfestival(){
         xhr.send(data);
         console.log(data);
 }
+}
 
 function openWindow(){
     window.open("http://localhost/eventcoinwebsite/homepage.html", "_self")
