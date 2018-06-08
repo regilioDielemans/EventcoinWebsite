@@ -17,7 +17,6 @@
 		<a href="#sponsorBewerken">Sponsor bewerken</a>
 	</div>
 	<div class="container">
-		<h1>edit</h1>
 	</div>
 	
 
@@ -25,18 +24,21 @@
 
 	<script>
 		$(function() {
+			var token = sessionStorage.token;
 			$.ajaxSetup({
-				var token = sessionStorage.token;
 				headers:{
-					'X-Access-Token': token;
+					'X-Access-Token': token
+				}})
+			var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival"
+			$.get(url, function(data){
+				console.log(data)
+				$(function() {
+				for (i = 0; i < data.length; i++){
+					$(".container").append('<h1>' + data[i].name + '</h1>');
 				}
-								url:'https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/Festival',
-				type:'GET',
-
-			})
-
-
 		})
+			}, 'json');
+		});
 	</script>
 </body>
 </html>
