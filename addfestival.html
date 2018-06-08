@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Eventcoin - add festival</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="script.js" type="text/javascript"></script>
@@ -25,7 +26,7 @@
 		    <input type="text" class="form-control" id="festivalName" aria-describedby="emailHelp">
 		  </div>
 		  <div class="form-group">
-		    <label for="locatie">locatie</label>
+		    <label for="locatie">Locatie</label>
 		    <input type="text" class="form-control" id="festivalLocation">
 		  </div>
 		  <div class="form-group">
@@ -57,8 +58,24 @@
 		    <input type="text" class="form-control" id="festivalPhotoUrl">
 		  </div>
 		  <div class="form-group">
+		    <label for="CollectionId">Collectie ID</label>
+		    <input type="text" class="form-control" id="festivalCollectionId" placeholder="Geef een ID mee voor het festival.">
+		  </div>
+		  <div class="form-group">
 		    <label for="Trailer">Trailer Url</label>
 		  	<input type="text" class="form-control" id="festivalVideoUrl" placeholder="Voorbeeld: https://www.youtube.com/watch?v=Wx8WX3EpjNQ">
+		  </div>
+		  <div class="form-group">
+		    <label for="SponsorArray">Sponsors</label>
+		  	<input type="text" class="form-control" id="festivalSponsors" placeholder="Voeg hier een ImageUrl toe voor een sponsor.">
+		  </div>
+		  <div class="form-group">
+		    <label for="LineUp">Line Up</label>
+		  	<input type="text" class="form-control" id="festivalLineUp" placeholder="Voeg hier de Line Up toe voor het festival">
+		  </div>
+		  <div class="form-group">
+		    <label for="Products">Producten</label>
+		  	<input type="text" class="form-control" id="festivalProducts" placeholder="Voeg hier de producten toe voor het festival">
 		  </div>
 		  	  <button onclick="addfestival()" type="button" class="btn btn-primary">voeg toe</button>
 
