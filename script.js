@@ -1,6 +1,6 @@
 function login(){
     xhr = new XMLHttpRequest();
-    var url = "https://eventcoin.herokuapp.com/api/login";
+    var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/login";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () { 
@@ -12,7 +12,7 @@ function login(){
                 console.log("The email adress: " + json.email + " has logged in")
                 console.log(json.token)
                 sessionStorage.token = json.token;
-                setTimeout(openWindow, 2000);
+                setTimeout(openWindow, 0);
             }else{
                 alert("U heeft geen administrator rechten.");
             }
