@@ -1,9 +1,3 @@
-document.onkeydown=function(){
-    if (window.event.keyCode=='13') {
-        login();
-    }
-}
-
 function login(){
     xhr = new XMLHttpRequest();
     var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/login";
@@ -82,6 +76,7 @@ function addfestival(){
 
         var data = JSON.stringify({"name":festivalName,"location":festivalLocation,"map":festivalMapUrl,"dateStart":festivalStart,"dateEnd":festivalEnd,"coinPrice":festivalCoinPrice,"descriptionNL":festivalDescNL,"descriptionEN":festivalDescEN,"imageUrl":festivalPhotoUrl,"collectionId":festivalCollectionId,"trailerUrl":festivalVideoUrl,"sponsorArray":festivalSponsors,"lineUp":festivalLineUp,"products":festivalProducts
     })
+
         xhr.send(data);
         console.log(data);
 }
