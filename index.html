@@ -12,7 +12,7 @@
 
 	<div class="container">
 		<br><h1>Login</h1>
-	<form>
+	<form id="loginForm">
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">Email adres</label>
 	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email adres">
@@ -22,7 +22,7 @@
 	    <label for="exampleInputPassword1">Wachtwoord</label>
 	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Wachtwoord">
 	  </div>
-	  <button onclick="login()" type="button" class="btn btn-primary">Login</button>
+	  <button onclick="login()" type="button" class="btn btn-primary" id="submitBtn">Login</button>
 	  <p hidden="none" id="redirectText"><br>U bent succesvol ingelogd!</p>	
 	</form>
 

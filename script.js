@@ -1,3 +1,9 @@
+document.onkeydown=function(){
+    if (window.event.keyCode=='13') {
+        login();
+    }
+}
+
 function login(){
     xhr = new XMLHttpRequest();
     var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/login";
@@ -24,7 +30,10 @@ function login(){
                 alert("Het ingevoerde email adres is incorrect.\nProbeer het opnieuw.");
             }
             if (json.code == 2) {
-                alert("Het ingevoerde wachtwoord is incorrect. \nProbeer het opnieuw.")
+                alert("Het ingevoerde wachtwoord is incorrect. \nProbeer het opnieuw.");
+            }
+            if (json.code == 412) {
+                alert("U heeft een van de velden opengelaten. \nProbeer het opnieuw. ");
             }
         }
     }
