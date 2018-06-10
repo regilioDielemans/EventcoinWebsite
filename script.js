@@ -71,10 +71,22 @@ function addfestival(){
         var festivalCollectionId = $('#festivalCollectionId').val()
         var festivalVideoUrl = $('#festivalVideoUrl').val()
         var festivalSponsors = $('#festivalSponsors').val()
-        var festivalLineUp = $('#festivalLineUp').val()
         var festivalProducts = $('#festivalProducts').val()
 
-        var data = JSON.stringify({"name":festivalName,"location":festivalLocation,"map":festivalMapUrl,"dateStart":festivalStart,"dateEnd":festivalEnd,"coinPrice":festivalCoinPrice,"descriptionNL":festivalDescNL,"descriptionEN":festivalDescEN,"imageUrl":festivalPhotoUrl,"collectionId":festivalCollectionId,"trailerUrl":festivalVideoUrl,"sponsorArray":festivalSponsors,"lineUp":festivalLineUp,"products":festivalProducts
+        var lineUpStartDate = $('#lineUpStartDate').val()
+        var lineUpEndDate = $('#lineUpEndDate').val()
+        var lineUpArtist = $('#lineUpArtist').val()
+        var lineUpStage = $('#lineUpStage').val()
+
+        var lineUpAddedTogether = { dateStart : lineUpStartDate, 
+                                    dateEnd : lineUpEndDate, 
+                                    artist : { id : lineUpArtist },
+                                    stage : lineUpStage };
+      
+        var lineUpStringified = JSON.stringify(lineUpAddedTogether, ['dateStart', 'dateEnd', 'artist', 'stage'])
+        console.log(lineUpStringified)
+
+        var data = JSON.stringify({"name":festivalName,"location":festivalLocation,"map":festivalMapUrl,"dateStart":festivalStart,"dateEnd":festivalEnd,"coinPrice":festivalCoinPrice,"descriptionNL":festivalDescNL,"descriptionEN":festivalDescEN,"imageUrl":festivalPhotoUrl,"collectionId":festivalCollectionId,"trailerUrl":festivalVideoUrl,"sponsorArray":festivalSponsors,"lineUp":lineUpStringified,"products":festivalProducts
     })
 
         xhr.send(data);
