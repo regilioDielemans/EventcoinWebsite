@@ -18,7 +18,7 @@
 	</div>
 
 	<div class="container">
-		<br><h1>Festival toevoegen</h1><br>
+		<br><h1>Festival bewerken</h1><br>
 
 		<form>
 		  <div class="form-group">
@@ -85,6 +85,51 @@
 		</form>		
 	</div>
 
+	<script>
+		$(function() {
+				var $_GET = {};
+				document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+    			function decode(s) {
+        			return decodeURIComponent(s.split("+").join(" "));
+    			}
 
+    			$_GET[decode(arguments[1])] = decode(arguments[2]);
+			});
+
+			var festivalId = $_GET["id"]
+
+			var token = sessionStorage.token;
+			$.ajaxSetup({
+				headers:{
+					'X-Access-Token': token
+				}})
+
+
+			var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival/" + festivalId;
+			$.get(url, function(data){
+				console.log(data)
+				$(function() {
+					$("#festivalName").val(data.name);
+					$("#festivalLocation").val(data.location);
+					$("#festivalMapUrl").val(data.map);
+					$("#festivalStart").val(data.dateStart);
+					$("#festivalEnd").val(data.dateEnd);
+					$("#festivalCoinPrice").val(data.coinPrice);
+					$("#festivalDescNL").val(data.descriptionNL);
+					$("#festivalDescEN").val(data.descriptionEN);
+					$("#festivalPhotoUrl").val(data.imageUrl);
+					$("#festivalCollectionId").val(data.collectionId);
+					$("#festivalVideoUrl").val(data.trailerUrl);
+					$("#festivalSponsors").val(data.sponsorArray);
+					$("#lineUpStartDate").val('');
+					$("#lineUpEndDate").val('');
+					$("#lineUpArtist").val('');
+					$("#lineUpStage").val('');
+
+		
+		})
+			}, 'json');
+		});
+	</script>
 </body>
 </html>
