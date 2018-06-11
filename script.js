@@ -78,15 +78,19 @@ function addfestival(){
         var lineUpArtist = $('#lineUpArtist').val()
         var lineUpStage = $('#lineUpStage').val()
 
-        var lineUpAddedTogether = { dateStart : lineUpStartDate, 
+        /*var lineUpAddedTogether = { dateStart : lineUpStartDate, 
                                     dateEnd : lineUpEndDate, 
                                     artist : { id : lineUpArtist },
                                     stage : lineUpStage };
       
         var lineUpStringified = JSON.stringify(lineUpAddedTogether, ['dateStart', 'dateEnd', 'artist', 'stage'])
-        console.log(lineUpStringified)
+        console.log(lineUpStringified)*/
 
-        var data = JSON.stringify({"name":festivalName,"location":festivalLocation,"map":festivalMapUrl,"dateStart":festivalStart,"dateEnd":festivalEnd,"coinPrice":festivalCoinPrice,"descriptionNL":festivalDescNL,"descriptionEN":festivalDescEN,"imageUrl":festivalPhotoUrl,"collectionId":festivalCollectionId,"trailerUrl":festivalVideoUrl,"sponsorArray":festivalSponsors,"lineUp":lineUpStringified,"products":festivalProducts
+        var data = JSON.stringify({"name":festivalName,"location":festivalLocation,"map":festivalMapUrl,"dateStart":festivalStart,
+            "dateEnd":festivalEnd,"coinPrice":festivalCoinPrice,"descriptionNL":festivalDescNL,"descriptionEN":festivalDescEN,
+            "imageUrl":festivalPhotoUrl,"collectionId":festivalCollectionId,"trailerUrl":festivalVideoUrl,"sponsorArray":[festivalSponsors],
+            "lineUp": [{ "dateStart" : lineUpStartDate, "dateEnd" : lineUpEndDate, "artist" : { "id" : lineUpArtist }, "stage" : lineUpStage}],
+            "products": [{ "id" : festivalProducts }]
     })
 
         xhr.send(data);
