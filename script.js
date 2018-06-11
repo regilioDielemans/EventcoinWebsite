@@ -65,17 +65,21 @@ function addfestival(){
         var festivalStart = $('#festivalStart').val()
         var festivalEnd = $('#festivalEnd').val()
         var festivalCoinPrice = $('#festivalCoinPrice').val()
+        var coinPriceParsed = parseInt(festivalCoinPrice);
         var festivalDescNL = $('#festivalDescNL').val()
         var festivalDescEN = $('#festivalDescEN').val()
         var festivalPhotoUrl = $('#festivalPhotoUrl').val()
         var festivalCollectionId = $('#festivalCollectionId').val()
+        var collectionIdParsed = parseInt(festivalCollectionId);
         var festivalVideoUrl = $('#festivalVideoUrl').val()
         var festivalSponsors = $('#festivalSponsors').val()
         var festivalProducts = $('#festivalProducts').val()
+        var productsParsed = parseInt(festivalProducts);
 
         var lineUpStartDate = $('#lineUpStartDate').val()
         var lineUpEndDate = $('#lineUpEndDate').val()
         var lineUpArtist = $('#lineUpArtist').val()
+        var artistIdParsed = parseInt(lineUpArtist);
         var lineUpStage = $('#lineUpStage').val()
 
         /*var lineUpAddedTogether = { dateStart : lineUpStartDate, 
@@ -86,11 +90,28 @@ function addfestival(){
         var lineUpStringified = JSON.stringify(lineUpAddedTogether, ['dateStart', 'dateEnd', 'artist', 'stage'])
         console.log(lineUpStringified)*/
 
-        var data = JSON.stringify({"name":festivalName,"location":festivalLocation,"map":festivalMapUrl,"dateStart":festivalStart,
-            "dateEnd":festivalEnd,"coinPrice":festivalCoinPrice,"descriptionNL":festivalDescNL,"descriptionEN":festivalDescEN,
-            "imageUrl":festivalPhotoUrl,"collectionId":festivalCollectionId,"trailerUrl":festivalVideoUrl,"sponsorArray":[festivalSponsors],
-            "lineUp": [{ "dateStart" : lineUpStartDate, "dateEnd" : lineUpEndDate, "artist" : { "id" : lineUpArtist }, "stage" : lineUpStage}],
-            "products": [{ "id" : festivalProducts }]
+        var data = JSON.stringify({"name":festivalName,
+            "location":festivalLocation,
+            "map":festivalMapUrl,
+            "dateStart":festivalStart,
+            "dateEnd":festivalEnd,
+            "coinPrice":coinPriceParsed,
+            "descriptionNL":festivalDescNL,
+            "descriptionEN":festivalDescEN,
+            "imageUrl":festivalPhotoUrl,
+            "collectionId":collectionIdParsed,
+            "trailerUrl":festivalVideoUrl,
+            "sponsorArray":[festivalSponsors],
+            "lineUp":   [{  "dateStart" : lineUpStartDate, 
+                            "dateEnd" : lineUpEndDate, 
+                            "artist" : 
+                            { 
+                                "id" : artistIdParsed 
+                            }, 
+                            "stage" : lineUpStage}],
+            "products": [{ 
+                "id" : productsParsed
+            }]
     })
 
         xhr.send(data);
