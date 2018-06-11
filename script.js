@@ -93,6 +93,12 @@ function addfestival(){
         console.log(data);
 }
 
+function editfestival(festvalid){ 
+    console.log(festvalid)
+    window.open("http://localhost/eventcoinwebsite/editfestival.html?id=" + festvalid, "_self")
+
+}
+
 function openWindow(){
     window.open("http://localhost/eventcoinwebsite/homepage.html", "_self")
 }
