@@ -15,21 +15,25 @@
 		<a href="festivals.html">Festival bewerken</a>
 		<a href="addsponsor.html">Sponsor toevoegen</a>
 		<a href="editsponsor.html">Sponsor bewerken</a>
-		<a class="active" href="addartist.html">Artiest toevoegen</a>
+		<a href="addartist.html">Artiest toevoegen</a>
 		<a href="editartist.html">Artiest bewerken</a>
-		<a href="addproduct.html">Product toevoegen</a>
+		<a class="active" href="addproduct.html">Product toevoegen</a>
 	</div>
 	<div class="container">
-		<br><h1>Artiest toevoegen</h1><br>
+		<br><h1>Product toevoegen</h1><br>
 
 		<form>
 			<div class="form-group">
-			<label for="artistName">Naam van artiest</label>
-			<input type="text" class="form-control" id="artistName">
+			<label for="productnameNl">Naam van product nederlands</label>
+			<input type="text" class="form-control" id="productnameNl">
 			</div>
 			<div class="form-group">
-			<label for="artistUrl">Website van artiest </label>
-			<input type="text" class="form-control" id="artistUrl" placeholder="Wikipedia">
+			<label for="productnameEn">Naam van product engels</label>
+			<input type="text" class="form-control" id="productnameEn">
+			</div>
+			<div class="form-group">
+			<label for="productprice">prijs van product</label>
+			<input type="text" class="form-control" id="productprice">
 			</div>
 			<button type="button" id="addArtistButton" class="btn btn-primary">Toevoegen</button>
 		</form>
@@ -44,12 +48,14 @@
 				}})
 
 			$("#addArtistButton").click(function(){
-				console.log("tesr")
-				var artistName = $( "#artistName" ).val()
-				var artistUrl = $( "#artistUrl" ).val()
-			$.post( "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/artist", { name: artistName, url: artistUrl } )
+				console.log("test")
+				var productnameNl = $( "#productnameNl" ).val()
+				var productnameEn = $( "#productnameEn" ).val()
+				var productprice = $( "#productprice" ).val()
+
+			$.post( "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/product", { price: productprice, nameNL: productnameNl,nameEN:productnameEn } )
 			alert("succesvol toegevoegd")
-			window.open("http://localhost/eventcoinwebsite/addartist.html", "_self")
+			window.open("http://localhost/eventcoinwebsite/addproduct.html", "_self")
 		})
 		})
 			
