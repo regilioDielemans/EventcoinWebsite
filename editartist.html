@@ -39,5 +39,23 @@
 			<button type="button" class="btn btn-primary">Bewerken</button>
 		</form>
 	</div>
+
+	<div><br><br>
+		<table id="dataTable" style="width: 80%" border="1"></table>
+	</div>
+
+	<script>
+		$(function() {
+			var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/artist"
+			$.get(url, function(data){
+				console.log(data)
+				var trHTML = '';
+				$.each(data, function(i, item){
+					trHTML += '<tr><td>' + item.id + '</td><td>' + item.name + '</td><td>' + item.url + '</td></tr>'
+				});
+				$('#dataTable').append(trHTML);
+			}, 'json')
+		})
+	</script>
 </body>
 </html>

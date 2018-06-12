@@ -119,7 +119,7 @@ function addfestival(){
 }
 
 
-function addfestival(){ 
+/*function addfestival(){ 
     var token = sessionStorage.token
     var requestToken = token;
     xhr = new XMLHttpRequest();
@@ -150,7 +150,7 @@ function addfestival(){
 
         xhr.send(data);
         console.log(data);
-}
+}*/
 
 
 function editfestival(festvalid){ 
