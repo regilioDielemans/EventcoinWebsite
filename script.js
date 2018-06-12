@@ -118,6 +118,41 @@ function addfestival(){
         console.log(data);
 }
 
+
+function addfestival(){ 
+    var token = sessionStorage.token
+    var requestToken = token;
+    xhr = new XMLHttpRequest();
+    var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.setRequestHeader("X-Access-Token",requestToken)
+    console.log(requestToken)
+    xhr.onreadystatechange = function () { 
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var json = JSON.parse(xhr.responseText);
+
+            if (json.code == 412) {
+                alert("U heeft iets verkeerd ingevoerd.")
+            }
+        }
+    }
+        var addSponsorPhotoUrl = $('#addSponsorPhotoUrl').val()
+        var addSponsorId = $('#addSponsorId').val()
+        var addSponsorFestivalId = $('#addSponsorFestivalId').val()
+
+        var data = JSON.stringify({
+            "name":festivalName,
+            "location":festivalLocation,
+            "map":festivalMapUrl,
+
+    })
+
+        xhr.send(data);
+        console.log(data);
+}
+
+
 function editfestival(festvalid){ 
     console.log(festvalid)
     window.open("http://localhost/eventcoinwebsite/editfestival.html?id=" + festvalid, "_self")
