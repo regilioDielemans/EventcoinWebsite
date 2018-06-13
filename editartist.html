@@ -25,6 +25,10 @@
 
 		<form>
 			<div class="form-group">
+			<label for="artistId">ID van artiest</label>
+			<input type="text" class="form-control" id="editArtistId" placeholder="Geef hier het ID van de artiest op.">
+			</div>
+			<div class="form-group">
 			<label for="artistName">Naam bewerken</label>
 			<input type="text" class="form-control" id="editArtistName">
 			</div>
@@ -32,16 +36,16 @@
 			<label for="artistUrl">Website bewerken </label>
 			<input type="text" class="form-control" id="editArtistUrl" placeholder="Wikipedia">
 			</div>
-			<div class="form-group">
-			<label for="artistId">ID van artiest bewerken</label>
-			<input type="text" class="form-control" id="editArtistId">
-			</div>
-			<button type="button" class="btn btn-primary">Bewerken</button>
+			<button onclick="editArtist()" type="button" class="btn btn-primary">Bewerken</button><br><br>
+			<input type="text" id="tableSearchInput" onkeyup="searchTableFunction()" placeholder="Zoek op namen">
 		</form>
 	</div>
-
-	<div><br><br>
-		<table id="dataTable" style="width: 80%" border="1"></table>
+	<div><br>
+		<table id="dataTable" style="width: 80%" border="1">
+			<th>ID</th>
+			<th>Naam</th>
+			<th>Website URL</th>
+		</table>
 	</div>
 
 	<script>
@@ -56,6 +60,26 @@
 				$('#dataTable').append(trHTML);
 			}, 'json')
 		})
+	</script>
+
+	<script>
+		function searchTableFunction(){
+			var input, filter, table, tr, td, i;
+			input = document.getElementById("tableSearchInput");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("dataTable")
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none"
+					}
+				}
+			}
+		}
 	</script>
 </body>
 </html>

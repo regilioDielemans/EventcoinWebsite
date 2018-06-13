@@ -82,14 +82,6 @@ function addfestival(){
         var artistIdParsed = parseInt(lineUpArtist);
         var lineUpStage = $('#lineUpStage').val()
 
-        /*var lineUpAddedTogether = { dateStart : lineUpStartDate, 
-                                    dateEnd : lineUpEndDate, 
-                                    artist : { id : lineUpArtist },
-                                    stage : lineUpStage };
-      
-        var lineUpStringified = JSON.stringify(lineUpAddedTogether, ['dateStart', 'dateEnd', 'artist', 'stage'])
-        console.log(lineUpStringified)*/
-
         var data = JSON.stringify({"name":festivalName,
             "location":festivalLocation,
             "map":festivalMapUrl,
@@ -118,39 +110,32 @@ function addfestival(){
         console.log(data);
 }
 
+$.put = function(url, data, callback, type){
+ 
+  if ( $.isFunction(data) ){
+    type = type || callback,
+    callback = data,
+    data = {}
+  }
+ 
+  return $.ajax({
+    url: url,
+    type: 'PUT',
+    success: callback,
+    data: data,
+    contentType: type
+  });
+}
 
-/*function addfestival(){ 
-    var token = sessionStorage.token
-    var requestToken = token;
-    xhr = new XMLHttpRequest();
-    var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival";
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json");
-    xhr.setRequestHeader("X-Access-Token",requestToken)
-    console.log(requestToken)
-    xhr.onreadystatechange = function () { 
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var json = JSON.parse(xhr.responseText);
-
-            if (json.code == 412) {
-                alert("U heeft iets verkeerd ingevoerd.")
-            }
-        }
-    }
-        var addSponsorPhotoUrl = $('#addSponsorPhotoUrl').val()
-        var addSponsorId = $('#addSponsorId').val()
-        var addSponsorFestivalId = $('#addSponsorFestivalId').val()
-
-        var data = JSON.stringify({
-            "name":festivalName,
-            "location":festivalLocation,
-            "map":festivalMapUrl,
-
+function editArtist(){
+    var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/artist";
+    var editArtistId = $('#editArtistId').val()
+    var newArtistName = $('#editArtistName').val();
+    var newArtistUrl = $('#editArtistUrl').val()
+    $.put(url, {id: editArtistId, name: newArtistName, url: newArtistUrl}, function(result){
+        console.log(result)
     })
-
-        xhr.send(data);
-        console.log(data);
-}*/
+}
 
 
 function editfestival(festvalid){ 
