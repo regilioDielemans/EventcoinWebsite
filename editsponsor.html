@@ -25,19 +25,60 @@
 
 		<form>
 			<div class="form-group">
-			<label for="editSponsorPhotoUrl">Foto URL bewerken</label>
-			<input type="text" class="form-control" id="editSponsorPhotoUrl">
-			</div>
-			<div class="form-group">
-			<label for="editSponsorId">ID van sponsor bewerken</label>
-			<input type="text" class="form-control" id="editSponsorId">
-			</div>
-			<div class="form-group">
-			<label for="editSponsorFestivalId">Bijbehorende festival ID bewerken</label>
+			<label for="editSponsorFestivalId">ID van de sponsor</label>
 			<input type="text" class="form-control" id="editSponsorFestivalId">
 			</div>
-			<button type="button" class="btn btn-primary">Bewerken</button>
+			<div class="form-group">
+			<label for="editSponsorImageUrl">Foto URL bewerken</label>
+			<input type="text" class="form-control" id="editSponsorImageUrl">
+			</div>
+			<div class="form-group">
+			<label for="editSponsorSiteUrl">Site URL van sponsor bewerken</label>
+			<input type="text" class="form-control" id="editSponsorSiteUrl">
+			</div>
+			<button onclick="editSponsor()" id="editSponsorBtn" type="button" class="btn btn-primary">Bewerken</button><br><br>
+			<input type="text" id="sponsorTableSearch" onkeyup="searchTableFunction()" placeholder="Zoek op sponsor">
 		</form>
 	</div>
+	<div><br>
+		<table id="sponsorDataTable" style="width: 90%" border="1">
+			<th>ID</th>
+			<th>Naam</th>
+			<th>Website URL</th>
+		</table>
+	</div>
+
+	<script>
+		$(function() {
+			var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/sponsor"
+			$.get(url, function(data){
+				console.log(data)
+				var trHTML = '';
+				$.each(data, function(i, item){
+					trHTML += '<tr><td>' + item.sponsorId + '</td><td>' + item.imageUrl + '</td><td>' + item.siteUrl + '</td></tr>'
+				});
+				$('#sponsorDataTable').append(trHTML);
+			}, 'json')
+		})
+	</script>
+	<script>
+		function searchTableFunction(){
+			var input, filter, table, tr, td, i;
+			input = document.getElementById("sponsorTableSearch");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("sponsorDataTable")
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[2];
+				if (td) {
+					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none"
+					}
+				}
+			}
+		}
+	</script>
 </body>
 </html>

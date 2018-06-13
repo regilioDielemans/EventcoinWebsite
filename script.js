@@ -110,33 +110,75 @@ function addfestival(){
         console.log(data);
 }
 
-$.put = function(url, data, callback, type){
- 
-  if ( $.isFunction(data) ){
-    type = type || callback,
-    callback = data,
-    data = {}
-  }
- 
-  return $.ajax({
-    url: url,
-    type: 'PUT',
-    success: callback,
-    data: data,
-    contentType: type
-  });
-}
+function editArtistFunction() {
+            var token = sessionStorage.token;
+            var editArtistId = parseInt($('#editArtistId').val())
+            var editArtistName = $('#editArtistName').val()
+            var editArtistUrl = $('#editArtistUrl').val()
+            var data = {id:editArtistId, name: editArtistName, url: editArtistUrl}
+            $.ajax({
+                url: 'https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/artist',
+                type: 'PUT',
+                dataType: 'json',
+                data: data,
+                headers:{
+                    'X-Access-Token': token
+                },
+                error: function(xhr, textStatus){
+                    if (xhr.status == 200) {
+                        alert("Wijziging successvol doorgevoerd!")
+                        window.open("http://localhost/eventcoinwebsite/editartist.html", "_self")
+                    }
+                    if (xhr.status == 412) {
+                        var err = JSON.parse(xhr.responseText);
+                        if (err.message == "there doesn't exist an artist with this id") {
+                            alert("Het ingevoerde ID is ongeldig.")
+                        }
+                        if (err.message == "the property `name` is missing") {
+                            alert("U heeft geen naam ingevoerd.")
+                        }
+                        if (err.message == "the property `url` is missing") {
+                            alert("U heeft geen website url ingevoerd.")
+                        }
+                    }
+                }
+            });
+        }
 
-function editArtist(){
-    var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/artist";
-    var editArtistId = $('#editArtistId').val()
-    var newArtistName = $('#editArtistName').val();
-    var newArtistUrl = $('#editArtistUrl').val()
-    $.put(url, {id: editArtistId, name: newArtistName, url: newArtistUrl}, function(result){
-        console.log(result)
-    })
+function editSponsor(){
+    var token = sessionStorage.token;
+    var editFestivalId = parseInt($('#editSponsorFestivalId').val())
+    var editFestivalImage = $('#editSponsorImageUrl').val()
+    var editFestivalSite = $('#editSponsorSiteUrl').val()
+    var data = {id:editFestivalId, imageUrl:editFestivalImage, siteUrl:editFestivalSite}
+    $.ajax({
+        url: 'https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/sponsor',
+        type: 'PUT',
+        dataType: 'json',
+        data: data,
+        headers:{
+                    'X-Access-Token': token
+                },
+                error: function(xhr, textStatus){
+                        if (xhr.status == 412) {
+                            var err = JSON.parse(xhr.responseText);
+                    if (err.message == "No sponsor exists with this id") {
+                        alert("Het ingevoerde ID is ongeldig.")
+                    }
+                    if (err.message == "imageUrl is empty") {
+                        alert("U heeft geen Url ingevoerd voor de foto.")
+                    }
+                    if (err.message == "siteUrl is empty") {
+                        alert("U heeft geen Url ingevoerd voor de website.")
+                    }
+                    }
+                    if (xhr.status == 200) {
+                        alert("Wijziging successvol doorgevoerd!")
+                        window.open("http://localhost/eventcoinwebsite/editsponsor.html", "_self")
+                    }
+                }
+        });
 }
-
 
 function editfestival(festvalid){ 
     console.log(festvalid)
