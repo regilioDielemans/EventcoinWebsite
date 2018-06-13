@@ -28,15 +28,34 @@
 			<input type="text" class="form-control" id="addSponsorPhotoUrl">
 			</div>
 			<div class="form-group">
-			<label for="addSponsorId">ID van sponsor</label>
-			<input type="text" class="form-control" id="addSponsorId">
+			<label for="addSponsorLinkUrl">Link URL</label>
+			<input type="text" class="form-control" id="addSponsorLinkUrl">
 			</div>
-			<div class="form-group">
-			<label for="addSponsorFestivalId">Bijbehorende festival ID</label>
-			<input type="text" class="form-control" id="addSponsorFestivalId">
-			</div>
-			<button type="button" class="btn btn-primary">Toevoegen</button>
+			<button type="button" id="addSponsorButton" class="btn btn-primary">Toevoegen</button>
 		</form>
 	</div>
+
+			<script>
+		$(function() {
+			var token = sessionStorage.token;
+			$.ajaxSetup({
+				headers:{
+					'X-Access-Token': token
+				}})
+
+			$("#addSponsorButton").click(function(){
+				
+				var addSponsorPhotoUrl = $( "#addSponsorPhotoUrl" ).val()
+				var addSponsorLinkUrl = $( "#addSponsorLinkUrl" ).val()
+
+			$.post( "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/sponsor", { imageUrl: addSponsorPhotoUrl, siteUrl: addSponsorLinkUrl } )
+			alert("succesvol toegevoegd")
+			window.open("http://localhost/eventcoinwebsite/addsponsor.html", "_self")
+		})
+		})
+			
+		
+
+	</script>
 </body>
 </html>
