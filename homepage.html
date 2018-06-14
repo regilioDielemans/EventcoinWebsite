@@ -20,13 +20,33 @@
 
 	<br><h1>&nbsp;&nbsp;Dit is de website voor de admins van EventCoin.</h1><br>
 	<h4>&nbsp;&nbsp;Klik op een van de knoppen boven in het navigatiemenu om daar naar toe te gaan.</h4><br>
-	<h4> &nbsp; De website heeft de volgende functies:
-		<br>&nbsp;&nbsp;1. Festival toevoegen
-		<br>&nbsp;&nbsp;2. Festival bewerken
-		<br>&nbsp;&nbsp;3. Sponsor toevoegen
-		<br>&nbsp;&nbsp;4. Sponsor bewerken
-		<br>&nbsp;&nbsp;5. Artiest toevoegen
-		<br>&nbsp;&nbsp;6. Artiest bewerken
-		<br>&nbsp;&nbsp;7. Product toevoegen</h4>
+	<h4> &nbsp; De website heeft de volgende functies:</h4>
+		<h4 id="1" onclick="textClickFunction(this.id)">&nbsp;&nbsp;1. Festival toevoegen</h4>
+		<h4 id="2" onclick="textClickFunction(this.id)">&nbsp;&nbsp;2. Festival bewerken</h4>
+		<h4 id="3" onclick="textClickFunction(this.id)">&nbsp;&nbsp;3. Sponsor toevoegen</h4>
+		<h4 id="4" onclick="textClickFunction(this.id)">&nbsp;&nbsp;4. Sponsor bewerken</h4>
+		<h4 id="5" onclick="textClickFunction(this.id)">&nbsp;&nbsp;5. Artiest toevoegen</h4>
+		<h4 id="6" onclick="textClickFunction(this.id)">&nbsp;&nbsp;6. Artiest bewerken</h4>
+		<h4 id="7" onclick="textClickFunction(this.id)">&nbsp;&nbsp;7. Product toevoegen</h4>
 </body>
+
+<script>
+	function textClickFunction(clicked_id){
+		if (clicked_id == 1) {
+			window.open("addfestival.html", "_self")
+		}else if (clicked_id == 2) {
+			window.open("festivals.html", "_self")
+		}else if (clicked_id == 3) {
+			window.open("addsponsor.html", "_self")
+		}else if (clicked_id == 4) {
+			window.open("editsponsor.html", "_self")
+		}else if (clicked_id == 5) {
+			window.open("addartist.html", "_self")
+		}else if (clicked_id == 6) {
+			window.open("editartist.html", "_self")
+		}else if (clicked_id == 7) {
+			window.open("addproduct.html", "_self")
+		}
+	}
+</script>
 </html>
