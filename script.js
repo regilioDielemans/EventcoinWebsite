@@ -127,7 +127,7 @@ function editArtistFunction() {
                 error: function(xhr, textStatus){
                     if (xhr.status == 200) {
                         alert("Wijziging successvol doorgevoerd!")
-                        window.open("http://localhost/eventcoinwebsite/editartist.html", "_self")
+                        window.open("/eventcoinwebsite/editartist.html", "_self")
                     }
                     if (xhr.status == 412) {
                         var err = JSON.parse(xhr.responseText);
@@ -174,21 +174,21 @@ function editSponsor(){
                     }
                     if (xhr.status == 200) {
                         alert("Wijziging successvol doorgevoerd!")
-                        window.open("http://localhost/eventcoinwebsite/editsponsor.html", "_self")
+                        window.open("/eventcoinwebsite/editsponsor.html", "_self")
                     }
                 }
         });
 }
 
 function editfestival(festvalid){ 
-    window.open("http://localhost/eventcoinwebsite/editfestival.html?id=" + festvalid, "_self")
+    window.open("/eventcoinwebsite/editfestival.html?id=" + festvalid, "_self")
 
 }
 function festivalstatistiek(collectionId, festivalName){ 
-    window.open("http://localhost/eventcoinwebsite/statistiekenfestival.html?collectionId=" + collectionId,"_self")
+    window.open("/eventcoinwebsite/statistiekenfestival.html?collectionId=" + collectionId,"_self")
 
 }
 
 function openWindow(){
-    window.open("http://localhost/eventcoinwebsite/homepage.html", "_self")
+    window.open("/eventcoinwebsite/homepage.html", "_self")
 }

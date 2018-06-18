@@ -17,7 +17,9 @@
 		<a href="editsponsor.html">Sponsor bewerken</a>
 		<a href="addartist.html">Artiest toevoegen</a>
 		<a href="editartist.html">Artiest bewerken</a>
-		<a href="addproduct.html">Product toevoegen</a>
+		<a href="addproduct.html">Producten</a>
+		<a href="statistieken.html">Statistieken</a>
+		<a href="changerole.html">Rol aanpassen</a>
 	</div>
 
 	<div class="container">
@@ -25,7 +27,7 @@
 
 		<form>
 		  <div class="form-group">
-		    <label for="festivalName">Festival naam</label>
+		    <label for="festivalName">Festivalnaam</label>
 		    <input type="text" class="form-control" id="festivalName" aria-describedby="emailHelp">
 		  </div>
 		  <div class="form-group">
@@ -37,15 +39,15 @@
 		    <input type="text" class="form-control" id="festivalMapUrl" placeholder="Voorbeeld: https://www.pollstar.com/Image/FestivalPhotos/a130e8de-4d88-4994-abd0-30ee70788f41-ultramiami-rec-final.png">
 		  </div>
 		  <div class="form-group">
-		    <label for="festivalStart">Start datum</label>
+		    <label for="festivalStart">Startdatum</label>
 		    <input type="text" class="form-control" id="festivalStart">
 		  </div>
 		  <div class="form-group">
-		    <label for="festivalEnd">Eind datum</label>
+		    <label for="festivalEnd">Einddatum</label>
 		    <input type="text" class="form-control" id="festivalEnd">
 		  </div>
 		  <div class="form-group">
-		    <label for="Munt">Munt prijs</label>
+		    <label for="Munt">Muntprijs</label>
 		    <input type="text" class="form-control" id="festivalCoinPrice">
 		  </div>
 		  <div class="form-group">
@@ -57,15 +59,15 @@
 		    <textarea type="text" class="form-control" id="festivalDescEN" rows="5"></textarea>
 		  </div>
 		  <div class="form-group">
-		    <label for="festivalPhotoUrl">Foto Url</label>
+		    <label for="festivalPhotoUrl">Foto url</label>
 		    <input type="text" class="form-control" id="festivalPhotoUrl">
 		  </div>
 		  <div class="form-group">
 		    <label for="CollectionId">Collectie ID</label>
-		    <input type="text" class="form-control" id="festivalCollectionId" placeholder="Geef een ID mee voor het festival.">
+		    <input type="text" class="form-control" id="festivalCollectionId" placeholder="Geef een ID mee voor het festival">
 		  </div>
 		  <div class="form-group">
-		    <label for="Trailer">Trailer Url</label>
+		    <label for="Trailer">Trailer url</label>
 		  	<input type="text" class="form-control" id="festivalVideoUrl" placeholder="Voorbeeld: https://www.youtube.com/watch?v=Wx8WX3EpjNQ">
 		  </div>
 		  <div class="form-group">
@@ -81,17 +83,17 @@
 		  	<textarea type="text" class="form-control" id="festivalSponsorsTotal" rows="5"></textarea>
 		  </div>
 		  <div class="form-group">
-		    <label for="LineUp">Line Up</label>
+		    <label for="LineUp">Line-up</label>
 		  		<input type="text" class="form-control" id="lineUpStartDate" placeholder="2018-06-10 20:00">
 		  		<input type="text" class="form-control" id="lineUpEndDate" placeholder="2018-06-10 21:00">
-		  		<input type="text" class="form-control" id="lineUpArtist" placeholder="Geef een ID op.">
-		  		<input type="text" class="form-control" id="lineUpStage" placeholder="Geef een Stage op">
+		  		<input type="text" class="form-control" id="lineUpArtist" placeholder="Geef een ID op">
+		  		<input type="text" class="form-control" id="lineUpStage" placeholder="Geef een stage op">
 		  	</div>
 		  </form>
 		  	<button id="festivalAddLineUp">+1</button><br><br>
 		  <form>
 		  <div class="form-group">
-		  	<label for="lineUpResult">Line Up totaal</label>
+		  	<label for="lineUpResult">Line-up totaal</label>
 		  	<textarea type="text" class="form-control" id="festivalLineUpTotal" rows="5"></textarea>
 		  </div>
 		  <div class="form-group">
@@ -110,6 +112,5 @@
 			$("#festivalSponsorsTotal").append("[{" + addFestivalSponsorImgUrl + addFestivalSponsorsiteUrl + "}]")
 				})
 	</script>
-	
 </body>
 </html>

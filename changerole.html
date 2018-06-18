@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rollen aanpassen</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js" type="text/javascript"></script>
+</head>
+<body>
+	<div class="topnav">
+		<a href="homepage.html">Home</a>
+		<a href="addfestival.html">Festival toevoegen</a>
+		<a href="festivals.html">Festival bewerken</a>
+		<a href="addsponsor.html">Sponsor toevoegen</a>
+		<a href="editsponsor.html">Sponsor bewerken</a>
+		<a href="addartist.html">Artiest toevoegen</a>
+		<a href="editartist.html">Artiest bewerken</a>
+		<a href="addproduct.html">Producten</a>
+		<a href="statistieken.html">Statistieken</a>
+		<a class="active" href="changerole.html">Rol aanpassen</a>
+	</div>
+	<div class="container">
+		<br><h3>Op deze site kunt u een account een kassamedewerker rol geven.</h3><br>
+		<h4>Vul hiervoor het emailadres in van het account</h4><br>
+		<form>
+			<div class="form-group">
+				<label for="email">Emailadres invoeren</label>
+				<input type="text" class="form-control" id="roleEmailAdress" placeholder="Emailadres">
+			</div>
+			<button type="button" id="emailSearch" class="btn btn-primary">Aanpassen</button>
+		</form>
+	</div>
+
+	<script>
+		$('#emailSearch').click(function(event){
+			event.preventDefault();
+			var token = sessionStorage.token
+			var roleChangeEmail = $('#roleEmailAdress').val()
+			data = {email: roleChangeEmail}
+			var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/account"
+			$.ajax({
+				type: 'PUT',
+				url: url,
+				dataType: 'json',
+                data: data,
+				headers:{
+                    'X-Access-Token': token
+                },
+                error: function(xhr, textStatus){
+                	if (xhr.status == 200) {
+                		alert("De gebruiker is succesvol aangepast!")
+                		window.open("/eventcoinwebsite/changerole.html", "_self")
+                	}
+                }
+			})
+		})
+	</script>
+	
+</body>
+</html>
