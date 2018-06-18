@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home Pagina</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	<script src="script.js" type="text/javascript"></script>
+
+</head>
+<body>
+	<div class="topnav">
+		<a href="homepage.html">Home</a>
+		<a href="statistieken.html">statistieken</a>
+	</div>
+	<div class="container">
+
+		<h1>statistieken</h1>
+		<h3>statistieken per festival</h3>
+		<div class="row">
+
+		</div>
+	</div>
+	<script>
+		$(function() {
+			var token = sessionStorage.token;
+			$.ajaxSetup({
+				headers:{
+					'X-Access-Token': token
+				}})
+			var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival"
+			$.get(url, function(data){
+				$(function() {
+				for (i = 0; i < data.length; i++){
+					$(".row").append('<div class="col-md-2"><a onclick=festivalstatistiek(' + data[i].collectionId + ')><h1>' + data[i].name + '</h1></a>');
+
+				}
+		})
+			}, 'json');
+		});
+	</script>
+</body>
+</html>

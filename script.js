@@ -181,8 +181,11 @@ function editSponsor(){
 }
 
 function editfestival(festvalid){ 
-    console.log(festvalid)
     window.open("http://localhost/eventcoinwebsite/editfestival.html?id=" + festvalid, "_self")
+
+}
+function festivalstatistiek(collectionId, festivalName){ 
+    window.open("http://localhost/eventcoinwebsite/statistiekenfestival.html?collectionId=" + collectionId,"_self")
 
 }
 
