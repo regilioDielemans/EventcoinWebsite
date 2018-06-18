@@ -88,6 +88,7 @@
 		  		<input type="text" class="form-control" id="lineUpEndDate" placeholder="2018-06-10 21:00">
 		  		<input type="text" class="form-control" id="lineUpArtist" placeholder="Geef een ID op">
 		  		<input type="text" class="form-control" id="lineUpStage" placeholder="Geef een stage op">
+		  		<button type="button" id="allartist"> bekijk hier alle artiesten</button>
 		  	</div>
 		  </form>
 		  	<button id="festivalAddLineUp">+1</button><br><br>
@@ -106,11 +107,40 @@
 
 
 	<script>
-			$('#festivalAddSponsor').click(function() {
+		var _sponsors = [];
+		$('#festivalAddSponsor').click(function() {
 			var addFestivalSponsorImgUrl = $('#festivalSponsorImageUrl').val()
-			var addFestivalSponsorsiteUrl = $('#festivalSponsorSiteUrl').val()
-			$("#festivalSponsorsTotal").append("[{" + addFestivalSponsorImgUrl + addFestivalSponsorsiteUrl + "}]")
-				})
+			var addFestivalSponsorSiteUrl = $('#festivalSponsorSiteUrl').val()
+			_sponsors.push({
+				'imageUrl': addFestivalSponsorImgUrl, 
+				'siteUrl': addFestivalSponsorSiteUrl
+			});
+			$("#festivalSponsorsTotal").append("[{" + addFestivalSponsorImgUrl + addFestivalSponsorSiteUrl + "}]")
+		});
+
+		var _lineup = [];
+		$('#festivalAddLineUp').click(function() {
+			var lineUpStartDate = $('#lineUpStartDate').val()
+			var lineUpEndDate = $('#lineUpEndDate').val()
+			var lineUpArtist = $('#lineUpArtist').val()
+			var lineUpStage = $('#lineUpStage').val()
+			_lineup.push(
+				{  "dateStart" : lineUpStartDate, 
+                   "dateEnd" : lineUpEndDate, 
+                   "artist" : 
+                             { 
+                                "id" : lineUpArtist 
+                             }, 
+                    "stage" : lineUpStage
+                });
+
+			$("#festivalLineUpTotal").append("[{" + lineUpStartDate + lineUpEndDate + "}]")
+		});
+
+
+		$('#allartist').click(function() {
+			window.open("allartist.html", "_blank", "width=1000,height=600");
+		});
 	</script>
 </body>
 </html>

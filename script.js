@@ -53,7 +53,7 @@ function addfestival(){
     xhr.onreadystatechange = function () { 
         if (xhr.readyState == 4 && xhr.status == 200) {
             var json = JSON.parse(xhr.responseText);
-
+            console.log(json)
             if (json.code == 412) {
                 alert("U heeft iets verkeerd ingevoerd.")
             }
@@ -72,42 +72,49 @@ function addfestival(){
         var festivalCollectionId = $('#festivalCollectionId').val()
         var collectionIdParsed = parseInt(festivalCollectionId);
         var festivalVideoUrl = $('#festivalVideoUrl').val()
-        var festivalSponsors = $('#festivalSponsors').val()
         var festivalProducts = $('#festivalProducts').val()
         var productsParsed = parseInt(festivalProducts);
 
-        var lineUpStartDate = $('#lineUpStartDate').val()
-        var lineUpEndDate = $('#lineUpEndDate').val()
-        var lineUpArtist = $('#lineUpArtist').val()
-        var artistIdParsed = parseInt(lineUpArtist);
-        var lineUpStage = $('#lineUpStage').val()
 
-        var data = JSON.stringify({"name":festivalName,
-            "location":festivalLocation,
-            "map":festivalMapUrl,
-            "dateStart":festivalStart,
-            "dateEnd":festivalEnd,
-            "coinPrice":coinPriceParsed,
-            "descriptionNL":festivalDescNL,
-            "descriptionEN":festivalDescEN,
-            "imageUrl":festivalPhotoUrl,
-            "collectionId":collectionIdParsed,
-            "trailerUrl":festivalVideoUrl,
-            "sponsorArray":[festivalSponsors],
-            "lineUp":   [{  "dateStart" : lineUpStartDate, 
-                            "dateEnd" : lineUpEndDate, 
-                            "artist" : 
-                            { 
-                                "id" : artistIdParsed 
-                            }, 
-                            "stage" : lineUpStage}],
-            "products": [{ 
-                "id" : productsParsed
-            }]
-    })
 
-        xhr.send(data);
-        console.log(data);
+        var sponsors = _sponsors;
+        var lineup = _lineup;
+        var products = [{id:productsParsed}]
+        var data = {
+            name:festivalName,
+            location:festivalLocation,
+            map:festivalMapUrl,
+            dateStart:festivalStart,
+            dateEnd:festivalEnd,
+            coinPrice:coinPriceParsed,
+            descriptionNL:festivalDescNL,
+            descriptionEN:festivalDescEN,
+            imageUrl:festivalPhotoUrl,
+            collectionId:collectionIdParsed,
+            trailerUrl:festivalVideoUrl,
+            sponsorArray:sponsors,
+            lineUp:lineup,
+            products:products
+        } 
+    //     var data = JSON.stringify({"name":festivalName,
+    //         "location":festivalLocation,
+    //         "map":festivalMapUrl,
+    //         "dateStart":festivalStart,
+    //         "dateEnd":festivalEnd,
+    //         "coinPrice":coinPriceParsed,
+    //         "descriptionNL":festivalDescNL,
+    //         "descriptionEN":festivalDescEN,
+    //         "imageUrl":festivalPhotoUrl,
+    //         "collectionId":collectionIdParsed,
+    //         "trailerUrl":festivalVideoUrl,
+    //         "sponsorArray": sponsors,
+    //         "lineUp":   lineup,
+    //         "products": [{ 
+    //             "id" : productsParsed
+    //         }]
+    // })
+
+        // xhr.send(data);
 }
 
 function editArtistFunction() {
