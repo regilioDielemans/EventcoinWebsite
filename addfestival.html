@@ -70,7 +70,15 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="SponsorArray">Sponsors</label>
-		  	<textarea type="text" class="form-control" id="festivalSponsors" rows="5" placeholder="Voeg hier een ImageUrl toe voor een sponsor."></textarea>
+		  	<input type="text" class="form-control" id="festivalSponsorImageUrl" placeholder="Foto Url">
+		  	<input type="text" class="form-control" id="festivalSponsorSiteUrl" placeholder="Site Url">
+		  </div>
+		</form>
+			<button id="festivalAddSponsor">+1</button><br><br>
+		<form>
+		  <div class="form-group">
+		  	<label for="sponsorResult">Sponsors totaal</label>
+		  	<textarea type="text" class="form-control" id="festivalSponsorsTotal" rows="5"></textarea>
 		  </div>
 		  <div class="form-group">
 		    <label for="LineUp">Line Up</label>
@@ -79,15 +87,29 @@
 		  		<input type="text" class="form-control" id="lineUpArtist" placeholder="Geef een ID op.">
 		  		<input type="text" class="form-control" id="lineUpStage" placeholder="Geef een Stage op">
 		  	</div>
+		  </form>
+		  	<button id="festivalAddLineUp">+1</button><br><br>
+		  <form>
+		  <div class="form-group">
+		  	<label for="lineUpResult">Line Up totaal</label>
+		  	<textarea type="text" class="form-control" id="festivalLineUpTotal" rows="5"></textarea>
+		  </div>
 		  <div class="form-group">
 		    <label for="Products">Producten</label>
-		  	<input type="text" class="form-control" id="festivalProducts" placeholder="Voeg hier de producten toe voor het festival">
+		  	<input type="text" class="form-control" id="festivalProducts" placeholder="Vul hier het ID in van het product">
 		  </div>
-		  	  <button onclick="addfestival()" type="button" class="btn btn-primary">Voeg toe</button>
-
+		  	  <button onclick="addfestival()" type="button" class="btn btn-primary">Voeg toe</button><br><br>
 		</form>		
 	</div>
 
 
+	<script>
+			$('#festivalAddSponsor').click(function() {
+			var addFestivalSponsorImgUrl = $('#festivalSponsorImageUrl').val()
+			var addFestivalSponsorsiteUrl = $('#festivalSponsorSiteUrl').val()
+			$("#festivalSponsorsTotal").append("[{" + addFestivalSponsorImgUrl + addFestivalSponsorsiteUrl + "}]")
+				})
+	</script>
+	
 </body>
 </html>
