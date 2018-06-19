@@ -206,14 +206,14 @@ function editSponsor(){
 }
 
 function editfestival(festvalid){ 
-    window.open("/eventcoinwebsite/editfestival.html?id=" + festvalid, "_self")
+    window.open("editfestival.html?id=" + festvalid, "_self")
 
 }
 function festivalstatistiek(collectionId, festivalName){ 
-    window.open("/eventcoinwebsite/statistiekenfestival.html?collectionId=" + collectionId,"_self")
+    window.open("statistiekenfestival.html?collectionId=" + collectionId,"_self")
 
 }
 
 function openWindow(){
-    window.open("/eventcoinwebsite/homepage.html", "_self")
+    window.open("homepage.html", "_self")
 }
