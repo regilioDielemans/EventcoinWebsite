@@ -65,12 +65,12 @@ function addfestival(){
         var festivalStart = $('#festivalStart').val()
         var festivalEnd = $('#festivalEnd').val()
         var festivalCoinPrice = $('#festivalCoinPrice').val()
-        var coinPriceParsed = parseInt(festivalCoinPrice);
+        var coinPriceParsed = parseFloat(festivalCoinPrice).toFixed(2);
         var festivalDescNL = $('#festivalDescNL').val()
         var festivalDescEN = $('#festivalDescEN').val()
         var festivalPhotoUrl = $('#festivalPhotoUrl').val()
         var festivalCollectionId = $('#festivalCollectionId').val()
-        var collectionIdParsed = parseInt(festivalCollectionId);
+        var collectionIdParsed = parseFloat(festivalCollectionId).toFixed(2);
         var festivalVideoUrl = $('#festivalVideoUrl').val()
         var festivalProducts = $('#festivalProducts').val()
         var productsParsed = parseInt(festivalProducts);
@@ -97,42 +97,24 @@ function addfestival(){
             products:products
         } 
         var token = sessionStorage.token;
-         $.ajax({
-                url: 'http://eventcoin.herokuapp.com/api/festival',
-                type: 'POST',
-                dataType: 'json',
-                data: data,
-                headers:{
-                    'X-Access-Token': token
-                },
-                error: function(xhr, textStatus){
-                    if (xhr.status == 200) {
-                        alert("Wijziging successvol doorgevoerd!")
-                        window.open("/eventcoinwebsite/editartist.html", "_self")
-                    }
-                }
-            });
-        }
-
-    //     var data = JSON.stringify({"name":festivalName,
-    //         "location":festivalLocation,
-    //         "map":festivalMapUrl,
-    //         "dateStart":festivalStart,
-    //         "dateEnd":festivalEnd,
-    //         "coinPrice":coinPriceParsed,
-    //         "descriptionNL":festivalDescNL,
-    //         "descriptionEN":festivalDescEN,
-    //         "imageUrl":festivalPhotoUrl,
-    //         "collectionId":collectionIdParsed,
-    //         "trailerUrl":festivalVideoUrl,
-    //         "sponsorArray": sponsors,
-    //         "lineUp":   lineup,
-    //         "products": [{ 
-    //             "id" : productsParsed
-    //         }]
-    // })
-
-        // xhr.send(data);
+		console.log(token);
+		$.ajax({
+			url: 'http://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival',
+			type: 'POST',
+			dataType: 'json',
+			data: data,
+			headers:{
+				'X-Access-Token': token
+			},
+			error: function(xhr, textStatus){
+				console.log(xhr);
+				if (xhr.status == 200) {
+					alert("Wijziging successvol doorgevoerd!")
+					window.open("/eventcoinwebsite/editartist.html", "_self")
+				}
+			}
+		});
+}
 
 
 function editArtistFunction() {

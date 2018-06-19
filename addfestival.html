@@ -72,8 +72,7 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="SponsorArray">Sponsors</label>
-		  	<input type="text" class="form-control" id="festivalSponsorImageUrl" placeholder="Foto Url">
-		  	<input type="text" class="form-control" id="festivalSponsorSiteUrl" placeholder="Site Url">
+		  	<input type="text" class="form-control" id="festivalSponsorId" placeholder="Sponsor id">
 		  </div>
 		</form>
 			<button id="festivalAddSponsor">+1</button><br><br>
@@ -109,13 +108,9 @@
 	<script>
 		var _sponsors = [];
 		$('#festivalAddSponsor').click(function() {
-			var addFestivalSponsorImgUrl = $('#festivalSponsorImageUrl').val()
-			var addFestivalSponsorSiteUrl = $('#festivalSponsorSiteUrl').val()
-			_sponsors.push({
-				'imageUrl': addFestivalSponsorImgUrl, 
-				'siteUrl': addFestivalSponsorSiteUrl
-			});
-			$("#festivalSponsorsTotal").append("[{" + addFestivalSponsorImgUrl + addFestivalSponsorSiteUrl + "}]")
+			var id = $('#festivalSponsorId').val()
+			_sponsors.push(id);
+			$("#festivalSponsorsTotal").text(_sponsors.join(', '));
 		});
 
 		var _lineup = [];
