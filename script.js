@@ -42,23 +42,23 @@ function login(){
 }
 
 function addfestival(){ 
-    var token = sessionStorage.token
-    var requestToken = token;
-    xhr = new XMLHttpRequest();
-    var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival";
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json");
-    xhr.setRequestHeader("X-Access-Token",requestToken)
-    console.log(requestToken)
-    xhr.onreadystatechange = function () { 
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var json = JSON.parse(xhr.responseText);
-            console.log(json)
-            if (json.code == 412) {
-                alert("U heeft iets verkeerd ingevoerd.")
-            }
-        }
-    }
+    // var token = sessionStorage.token
+    // var requestToken = token;
+    // xhr = new XMLHttpRequest();
+    // var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival";
+    // xhr.open("POST", url, true);
+    // xhr.setRequestHeader("Content-type", "application/json");
+    // xhr.setRequestHeader("X-Access-Token",requestToken)
+    // console.log(requestToken)
+    // xhr.onreadystatechange = function () { 
+    //     if (xhr.readyState == 4 && xhr.status == 200) {
+    //         var json = JSON.parse(xhr.responseText);
+    //         console.log(json)
+    //         if (json.code == 412) {
+    //             alert("U heeft iets verkeerd ingevoerd.")
+    //         }
+    //     }
+    // }
         var festivalName = $('#festivalName').val()
         var festivalLocation = $('#festivalLocation').val()
         var festivalMapUrl = $('#festivalMapUrl').val()
@@ -96,6 +96,24 @@ function addfestival(){
             lineUp:lineup,
             products:products
         } 
+        var token = sessionStorage.token;
+         $.ajax({
+                url: 'https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival',
+                type: 'POST',
+                dataType: 'json',
+                data: data,
+                headers:{
+                    'X-Access-Token': token
+                },
+                error: function(xhr, textStatus){
+                    if (xhr.status == 200) {
+                        alert("Wijziging successvol doorgevoerd!")
+                        window.open("/eventcoinwebsite/editartist.html", "_self")
+                    }
+                }
+            });
+        }
+
     //     var data = JSON.stringify({"name":festivalName,
     //         "location":festivalLocation,
     //         "map":festivalMapUrl,
@@ -115,7 +133,7 @@ function addfestival(){
     // })
 
         // xhr.send(data);
-}
+
 
 function editArtistFunction() {
             var token = sessionStorage.token;
