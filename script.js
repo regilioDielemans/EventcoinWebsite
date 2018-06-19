@@ -98,7 +98,7 @@ function addfestival(){
         } 
         var token = sessionStorage.token;
          $.ajax({
-                url: 'https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival',
+                url: 'http://eventcoin.herokuapp.com/api/festival',
                 type: 'POST',
                 dataType: 'json',
                 data: data,
