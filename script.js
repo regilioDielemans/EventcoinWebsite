@@ -112,6 +112,10 @@ function addfestival(){
 					alert("Wijziging successvol doorgevoerd!")
 					window.open("/eventcoinwebsite/editartist.html", "_self")
 				}
+                else{
+                    var err = JSON.parse(xhr.responseText)
+                    alert("Error: " + xhr.status + "\nMelding: " + err.message)
+                }
 			}
 		});
 }
