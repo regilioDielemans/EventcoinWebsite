@@ -38,23 +38,24 @@
 			event.preventDefault();
 			var token = sessionStorage.token
 			var roleChangeEmail = $('#roleEmailAdress').val()
-			data = {email: roleChangeEmail}
-			var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/account"
-			$.ajax({
-				type: 'PUT',
-				url: url,
-				dataType: 'json',
-                data: data,
+			var data = { email: roleChangeEmail }
+			var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/cashier"
+			$.ajaxSetup({
 				headers:{
-                    'X-Access-Token': token
-                },
-                error: function(xhr, textStatus){
-                	if (xhr.status == 200) {
-                		alert("De gebruiker is succesvol aangepast!")
-                		window.open("/eventcoinwebsite/changerole.html", "_self")
-                	}
-                }
+					'X-Access-Token': token
+				},
+				error: function(xhr, textStatus){
+					if (xhr.status == 200) {
+						alert("De gebruiker is succesvol aangepast!")
+					}
+					else {
+						alert("Er is iets fout gegaan, probeer het opnieuw of neem contact op.")
+					}
+				}
 			})
+			$.post(url, { email: roleChangeEmail })
+			console.log(data)
+			
 		})
 	</script>
 	
