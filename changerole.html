@@ -22,14 +22,23 @@
 		<a class="active" href="changerole.html">Rol aanpassen</a>
 	</div>
 	<div class="container">
-		<br><h3>Op deze site kunt u een account een kassamedewerker rol geven.</h3><br>
-		<h4>Vul hiervoor het emailadres in van het account</h4><br>
+		<br><h4>Op deze site kunt u een account een kassamedewerker rechten geven of weghalen. <br>Dit doet u aan de hand van het emailadres van het account.</h4><br>
+		<h4>Kassamedewerkerrechten toevoegen</h4><br>
 		<form>
 			<div class="form-group">
-				<label for="email">Emailadres invoeren</label>
+				<label for="email">Voer emailadres in</label>
 				<input type="text" class="form-control" id="roleEmailAdress" placeholder="Emailadres">
 			</div>
 			<button type="button" id="emailSearch" class="btn btn-primary">Aanpassen</button>
+		</form>
+		<br><br><br><br>
+		<form>
+			<div class="form-group">
+				<h4>Kassamedewerkerrechten verwijderen.</h4><br>
+				<label for="email">Voer emailadres in</label>
+				<input type="text" class="form-control" id="cashierEmailAddress" placeholder="Emailadres">
+			</div>
+			<button type="button" id="deleteCashierBtn" class="btn btn-primary">Verwijderen</button>
 		</form>
 	</div>
 
@@ -53,9 +62,33 @@
 					}
 				}
 			})
-			$.post(url, { email: roleChangeEmail })
+			$.post(url, data)
+			console.log(data)	
+		})
+	</script>
+
+	<script>
+		$('#deleteCashierBtn').click(function(event){
+			event.preventDefault();
+			var token = sessionStorage.token
+			var cashierEmailAddress = $('#cashierEmailAddress').val()
+			var data = { email: cashierEmailAddress }
+			var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/undocashier"
+			$.ajaxSetup({
+				headers:{
+					'X-Access-Token': token
+				},
+				error: function(xhr, textStatus){
+					if (xhr.status == 200) {
+						alert("De gebruiker is succesvol aangepast!")
+					}
+					else {
+						alert("Er is iets fout gegaan, probeer het opnieuw of neem contact op.")
+					}
+				}
+			})
+			$.post(url, data)
 			console.log(data)
-			
 		})
 	</script>
 	
