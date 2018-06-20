@@ -63,9 +63,14 @@
 				console.log(data)
 				var trHTML = '';
 				$.each(data, function(i, item){
-					trHTML += '<tr><td>' + item.sponsorId + '</td><td>' + item.imageUrl + '</td><td>' + item.siteUrl + '</td></tr>'
+					var tr = $('<tr><td id=\'id\'>' + item.sponsorId + '</td><td id=\'img\'>' + item.imageUrl + '</td><td id=\'url\'>' + item.siteUrl + '</td></tr>');
+					tr.click(function() {
+						$('#editSponsorFestivalId').val($(this).find('#id').text());
+						$('#editSponsorImageUrl').val($(this).find('#img').text());
+						$('#editSponsorSiteUrl').val($(this).find('#url').text());
+					});
+					$('#sponsorDataTable').append(tr);
 				});
-				$('#sponsorDataTable').append(trHTML);
 			}, 'json')
 		})
 	</script>
