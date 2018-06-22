@@ -42,23 +42,7 @@ function login(){
 }
 
 function addfestival(){ 
-    // var token = sessionStorage.token
-    // var requestToken = token;
-    // xhr = new XMLHttpRequest();
-    // var url = "https://ueg.herokuapp.com/http://eventcoin.herokuapp.com/api/festival";
-    // xhr.open("POST", url, true);
-    // xhr.setRequestHeader("Content-type", "application/json");
-    // xhr.setRequestHeader("X-Access-Token",requestToken)
-    // console.log(requestToken)
-    // xhr.onreadystatechange = function () { 
-    //     if (xhr.readyState == 4 && xhr.status == 200) {
-    //         var json = JSON.parse(xhr.responseText);
-    //         console.log(json)
-    //         if (json.code == 412) {
-    //             alert("U heeft iets verkeerd ingevoerd.")
-    //         }
-    //     }
-    // }
+
         var festivalName = $('#festivalName').val()
         var festivalLocation = $('#festivalLocation').val()
         var festivalMapUrl = $('#festivalMapUrl').val()
@@ -106,16 +90,15 @@ function addfestival(){
 			headers:{
 				'X-Access-Token': token
 			},
+			success: function() {
+				alert('Festival is succesvol toegevoegd');
+				window.open("addfestival.html", "_self")
+			},
 			error: function(xhr, textStatus){
 				console.log(xhr);
-				if (xhr.status == 200) {
-					alert("Wijziging successvol doorgevoerd!")
-					window.open("/eventcoinwebsite/editartist.html", "_self")
-				}
-                else{
-                    var err = JSON.parse(xhr.responseText)
-                    alert("Error: " + xhr.status + "\nMelding: " + err.message)
-                }
+				console.log(textStatus);
+				var err = JSON.parse(xhr.responseText)
+				alert("Error: " + xhr.status + "\nMelding: " + err.message)
 			}
 		});
 }
